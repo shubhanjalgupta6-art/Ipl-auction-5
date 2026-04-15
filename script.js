@@ -1,56 +1,7 @@
-// ================= IPL MEGA AUCTION 100 PLAYERS =================
-// EXACT DISTRIBUTION: 30 BATSMEN + 30 BOWLERS + 25 ALL-ROUNDERS + 15 WK
+// ================= PLAYERS =================
 
-let players = [];
-
-// ======================================================
-// RATING ENGINE
-// ======================================================
-
-function getRating(p){
-
-    if(p.role === "Batsman"){
-        return Math.min(100,
-            (p.runs / 130) + (p.hundreds * 6) + (p.fifties * 2) + (p.sr / 4)
-        );
-    }
-
-    if(p.role === "Bowler"){
-        return Math.min(100,
-            (p.wkts * 2) + (10 - p.econ) * 7
-        );
-    }
-
-    if(p.role === "All-Rounder"){
-        return Math.min(100,
-            (p.runs / 160) + (p.wkts * 1.5) + (p.sr / 5)
-        );
-    }
-
-    if(p.role === "Wicketkeeper"){
-        return Math.min(100,
-            (p.runs / 140) + (p.sr / 4)
-        );
-    }
-
-    return 70;
-}
-
-// ======================================================
-// HELPER
-// ======================================================
-
-function add(p){
-    p.rating = Math.floor(getRating(p));
-    p.base = Math.max(8, Math.floor(p.rating / 5));
-    players.push(p);
-}
-
-// ======================================================
-// ================= 30 BATSMEN =========================
-// ======================================================
-
-add({name:"Virat Kohli",role:"Batsman",runs:7263,hundreds:7,fifties:50,sr:130});
+let players = [
+ add({name:"Virat Kohli",role:"Batsman",runs:7263,hundreds:7,fifties:50,sr:130});
 add({name:"Rohit Sharma",role:"Batsman",runs:6200,hundreds:8,fifties:45,sr:131});
 add({name:"Shikhar Dhawan",role:"Batsman",runs:6617,hundreds:2,fifties:51,sr:127});
 add({name:"KL Rahul",role:"Batsman",runs:4163,hundreds:4,fifties:30,sr:134});
@@ -121,7 +72,7 @@ add({name:"Ishant Sharma",role:"Bowler",wkts:170,econ:8.0});
 add({name:"Navdeep Saini",role:"Bowler",wkts:60,econ:8.5});
 
 // ======================================================
-// ================= 20 ALL-ROUNDERS ====================
+// ================= 25 ALL-ROUNDERS ====================
 // ======================================================
 
 add({name:"Hardik Pandya",role:"All-Rounder",runs:2500,wkts:70,sr:145});
@@ -129,7 +80,6 @@ add({name:"Ravindra Jadeja",role:"All-Rounder",runs:2800,wkts:160,sr:130});
 add({name:"Andre Russell",role:"All-Rounder",runs:2400,wkts:100,sr:175});
 add({name:"Glenn Maxwell",role:"All-Rounder",runs:2700,wkts:40,sr:155});
 add({name:"Ben Stokes",role:"All-Rounder",runs:1500,wkts:50,sr:150});
-
 add({name:"Marcus Stoinis",role:"All-Rounder",runs:1800,wkts:40,sr:140});
 add({name:"Axar Patel",role:"All-Rounder",runs:1600,wkts:110,sr:125});
 add({name:"Washington Sundar",role:"All-Rounder",runs:900,wkts:60,sr:120});
@@ -141,13 +91,17 @@ add({name:"Jason Holder",role:"All-Rounder",runs:1500,wkts:80,sr:135});
 add({name:"Sam Curran",role:"All-Rounder",runs:1100,wkts:90,sr:140});
 add({name:"Chris Morris",role:"All-Rounder",runs:1000,wkts:95,sr:150});
 add({name:"Dwayne Bravo",role:"All-Rounder",runs:1500,wkts:180,sr:135});
-
 add({name:"Liam Livingstone",role:"All-Rounder",runs:1700,wkts:30,sr:165});
 add({name:"Riyan Parag",role:"All-Rounder",runs:900,wkts:25,sr:135});
 add({name:"Venkatesh Iyer",role:"All-Rounder",runs:1200,wkts:15,sr:140});
 add({name:"Shivam Dube",role:"All-Rounder",runs:1400,wkts:10,sr:145});
 add({name:"Deepak Hooda",role:"All-Rounder",runs:1700,wkts:20,sr:135});
 
+add({name:"Daniel Sams",role:"All-Rounder",runs:600,wkts:50,sr:150});
+add({name:"Kyle Jamieson",role:"All-Rounder",runs:500,wkts:40,sr:130});
+add({name:"Moises Henriques",role:"All-Rounder",runs:1300,wkts:60,sr:135});
+add({name:"Shahbaz Ahmed",role:"All-Rounder",runs:800,wkts:35,sr:130});
+add({name:"Romario Shepherd",role:"All-Rounder",runs:700,wkts:45,sr:155});
 
 // ======================================================
 // ================= 15 WICKETKEEPERS ===================
@@ -164,5 +118,154 @@ add({name:"Nicholas Pooran",role:"Wicketkeeper",runs:2200,sr:155});
 add({name:"Heinrich Klaasen",role:"Wicketkeeper",runs:1800,sr:160});
 add({name:"Dinesh Karthik WK",role:"Wicketkeeper",runs:4800,sr:135});
 
-// ================= FINAL CHECK =================
-console.log("TOTAL PLAYERS =", players.length); // MUST BE 100
+// ======================================================
+// RATING ENGINE
+// ======================================================
+
+function getRating(p){
+
+    if(p.role === "Batsman"){
+        return Math.min(100,
+            (p.runs / 130) + (p.hundreds * 6) + (p.fifties * 2) + (p.sr / 4)
+        );
+    }
+
+    if(p.role === "Bowler"){
+        return Math.min(100,
+            (p.wkts * 2) + (10 - p.econ) * 7
+        );
+    }
+
+    if(p.role === "All-Rounder"){
+        return Math.min(100,
+            (p.runs / 160) + (p.wkts * 1.5) + (p.sr / 5)
+        );
+    }
+
+    if(p.role === "Wicketkeeper"){
+        return Math.min(100,
+            (p.runs / 140) + (p.sr / 4)
+        );
+    }
+
+    return 70;
+}
+
+// ======================================================
+// HELPER
+// ======================================================
+
+function add(p){
+    p.rating = Math.floor(getRating(p));
+    p.base = Math.max(8, Math.floor(p.rating / 5));
+    players.push(p);
+}
+
+
+// ================= TEAMS =================
+
+let teams = [
+{name:"MI",budget:120,players:[],spent:0},
+{name:"CSK",budget:120,players:[],spent:0},
+{name:"RCB",budget:120,players:[],spent:0},
+{name:"KKR",budget:120,players:[],spent:0},
+{name:"GT",budget:120,players:[],spent:0},
+{name:"SRH",budget:120,players:[],spent:0}
+];
+
+let currentTeam = 0;
+let index = 0;
+let bid = 10;
+
+// ================= SHOW PLAYER =================
+
+function showPlayer(){
+    let p = players[index];
+
+    document.getElementById("playerCard").innerHTML = `
+        <b>${p.name}</b><br>
+        Role: ${p.role}<br>
+        Runs: ${p.runs || 0}<br>
+        Wickets: ${p.wkts || 0}<br>
+        50s: ${p.f50 || 0} | 100s: ${p.f100 || 0}<br>
+        SR: ${p.sr || 0}<br>
+        Current Bid: ₹${bid} Cr
+    `;
+
+    updateDashboard();
+}
+
+// ================= NEXT PLAYER =================
+
+function nextPlayer(){
+    index = (index+1)%players.length;
+    bid = 10;
+    showPlayer();
+}
+
+// ================= BID =================
+
+function increaseBid(){
+    bid += Math.floor(Math.random()*10 + 5);
+    showPlayer();
+}
+
+// ================= BUY =================
+
+function buyPlayer(){
+    let p = players[index];
+    let t = teams[currentTeam];
+
+    if(t.budget < bid){
+        alert("Not enough budget!");
+        return;
+    }
+
+    t.players.push(p);
+    t.budget -= bid;
+    t.spent += bid;
+
+    alert(p.name + " sold to " + t.name);
+
+    nextPlayer();
+}
+
+// ================= SWITCH TEAM =================
+
+function switchTeam(){
+    currentTeam = (currentTeam+1)%teams.length;
+
+    document.getElementById("currentTeam").innerHTML =
+    "Active Team: <b>" + teams[currentTeam].name + "</b>";
+}
+
+// ================= DASHBOARD =================
+
+function updateDashboard(){
+
+    let sold = teams.reduce((a,b)=>a+b.players.length,0);
+
+    document.getElementById("dashboard").innerHTML = `
+        Players Sold: ${sold}<br>
+        Remaining: ${100-sold}<br>
+        Current Team: ${teams[currentTeam].name}<br>
+        Budget Left: ₹${teams[currentTeam].budget} Cr
+    `;
+}
+
+// ================= WINNER =================
+
+function analyze(){
+    let best = teams[0];
+
+    teams.forEach(t=>{
+        if(t.spent > best.spent) best = t;
+    });
+
+    document.getElementById("analysis").innerHTML =
+    "Winner Team: <b>" + best.name + "</b>";
+}
+
+// INIT
+showPlayer();
+switchTeam();
