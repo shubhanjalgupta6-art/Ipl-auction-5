@@ -1,60 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>IPL Auction PRO</title>
+<title>IPL Auction Pro</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="bg"></div>
+<header>🏏 IPL MEGA AUCTION SIMULATOR</header>
 
-<header>🏏 IPL AUCTION PRO - PUBG LOBBY MODE</header>
-
-<div class="main">
+<div class="container">
 
 <!-- LEFT PANEL -->
-<div class="panel left">
+<div class="panel">
 
-    <div class="card big">
-        <h2>🎮 PLAYER LOBBY</h2>
+    <div class="card">
+        <h2>PLAYER CARD</h2>
+        <div id="playerCard">Loading...</div>
 
-        <div id="playerCard"></div>
-
-        <div class="buttons">
-            <button onclick="randomPlayer()">🎲 NEXT RANDOM PLAYER</button>
-            <button onclick="increaseBid()">⬆ INCREASE BID</button>
-            <button class="buy" onclick="buyPlayer()">💰 BUY PLAYER</button>
-        </div>
+        <button onclick="nextPlayer()">Next Player</button>
+        <button onclick="increaseBid()">Increase Bid</button>
+        <button class="buy" onclick="buyPlayer()">Buy Player</button>
 
         <p id="bidInfo"></p>
     </div>
 
     <div class="card">
-        <h2>🏆 WINNER ANALYSIS</h2>
-        <button onclick="analyze()">CHECK WINNER</button>
-        <p id="analysis"></p>
+        <h2>TEAM CONTROL</h2>
+        <button onclick="switchTeam()">Switch Team</button>
+        <p id="currentTeam"></p>
     </div>
 
 </div>
 
 <!-- RIGHT PANEL -->
-<div class="panel right">
+<div class="panel">
 
     <div class="card">
-        <h2>👥 ACTIVE TEAM</h2>
-        <button onclick="switchTeam()">SWITCH TEAM</button>
-        <p id="teamInfo"></p>
+        <h2>📊 DASHBOARD</h2>
+        <div id="dashboard"></div>
     </div>
 
     <div class="card">
-        <h2>📊 STATS DASHBOARD</h2>
-        <div id="stats"></div>
-    </div>
-
-    <div class="card">
-        <h2>🏟 TEAMS</h2>
-        <div id="teams"></div>
+        <h2>🏆 WINNER ANALYSIS</h2>
+        <button onclick="analyze()">Run Analysis</button>
+        <p id="analysis"></p>
     </div>
 
 </div>
